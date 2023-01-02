@@ -13,3 +13,7 @@ Supports unstructured data, and large files
 
 Azure Queue: 
 Service for storing large numbers of messages that can be accessed from anywhere in the world.  Used to pass messages between different Azure web servers 
+
+Azure Redundancy:
+Locally redundant storage -> Locally redundant storage (LRS) replicates your storage account three times within a single data center in the primary region.
+Zone-redundant storage -> Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region. Each availability zone is a separate physical location with independent power, cooling, and networking.
