@@ -93,5 +93,12 @@ Azure Storage offers two options for copying your data to a secondary region:
 - Geo-redundant storage (GRS) copies your data synchronously three times within a single physical location in the primary region using LRS.It then copies your data asynchronously to a single physical location in the secondary region. Within the secondary region, your data is copied synchronously three times using LRS
 - Geo-zone-redundant storage (GZRS) copies your data synchronously across three Azure availability zones in the primary region using ZRS. It then copies your data asynchronously to a single physical location in the secondary region. Within the secondary region, your data is copied synchronously three times using LRS.
 
+What is Azure Cosmos DB:
+- Azure Cosmos DB is a globally distributed database system that allows you to read and write data from the local replicas of your database and it transparently replicates the data to all the regions associated with your Cosmos account
+
+![cosmos-entities](https://user-images.githubusercontent.com/39561427/210715789-a3a91b63-c9d1-4f0a-a378-75a20013018d.png)
+
+
+
 
 
