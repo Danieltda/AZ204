@@ -98,7 +98,87 @@ What is Azure Cosmos DB:
 
 ![cosmos-entities](https://user-images.githubusercontent.com/39561427/210715789-a3a91b63-c9d1-4f0a-a378-75a20013018d.png)
 
+Data consistency from strongest to weakest:
+- Strong
+- Bounded staleness
+- Session
+- Consistent prefix
+- Eventual
 
+What are request units:
+- The cost of all database operations is normalized by Azure Cosmos DB and is expressed by request units
+- A request unit represents the system resources such as CPU, IOPS, and memory that are required to perform the database operations supported by Azure Cosmos DB.
+
+The type of Azure Cosmos DB account you're using determines the way consumed RUs get charged. There are three modes in which you can create an account:
+- Provisioned throughput mode
+- Serverless mode
+- Autoscale mode
+
+Partitioning explained:
+- In partitioning, the items in a container are divided into distinct subsets called logical partitions
+- In addition to a partition key that determines the item's logical partition, each item in a container has an item ID which is unique within a logical partition. Combining the partition key and the item ID creates the item's index, which uniquely identifies the item. Choosing a partition key is an important decision that will affect your application's performance.
+
+Partition key two components:
+- Partition key path
+- Partition key value
+
+AZ CLI commands:
+- Resource group-> az group create --location <myLocation> --name az204-cosmos-rg
+- Auzure Cosmos DB account -> az cosmosdb create --name <myCosmosDBacct> --resource-group az204-cosmos-rg
+
+Azure Virtual machines can be used for(examples):
+- Development and test
+- Applications in the cloud 
+- Extended datacenter 
+
+Two options for disk storage:
+- Managed disks -> Managed disks are the newer and recommended disk storage model and they are managed by Azure
+- Unmanaged disk -> With unmanaged disks, you’re responsible for the storage accounts that hold the virtual hard disks (VHDs) that correspond to your VM disks
+
+What is an availability set:
+- An availability set is a logical grouping of VMs that allows Azure to understand how your application is built to provide for redundancy and availability. An availability set is composed of two additional groupings that protect against hardware failures and allow updates to safely be applied - fault domains (FDs) and update domains (UDs).
+
+Load balancer:
+- It provides high availability by distributing traffic among healthy VMs
+- Configure front-end IP configuration to allow the load balancer and applications to be accessible over the internet
+
+Azure resource manager:
+- Azure Resource Manager is the deployment and management service for Azure. It provides a management layer that enables you to create, update, and delete resources in your Azure subscription
+
+![consistent-management-layer](https://user-images.githubusercontent.com/39561427/210945731-cd14088a-ec5a-41c1-a9ab-ddcf57b9c4cc.png)
+
+Azure resource manager advantages:
+- Declarative syntax
+- Repeatable results
+- Orchestration
+
+"resources": [
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2019-04-01",
+    "name": "mystorageaccount",
+    "location": "westus",
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "StorageV2",
+    "properties": {}
+  }
+]
+
+-->
+
+PUT
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2019-04-01
+REQUEST BODY
+{
+  "location": "westus",
+  "sku": {
+    "name": "Standard_LRS"
+  },
+  "kind": "StorageV2",
+  "properties": {}
+}
 
 
 
