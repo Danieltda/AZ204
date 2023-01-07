@@ -180,5 +180,12 @@ REQUEST BODY
   "properties": {}
 }
 
+Azure container registry:
+- Azure Container Registry (ACR) is a managed, private Docker registry service based on the open-source Docker Registry 2.0. Create and maintain Azure container registries to store and manage your private Docker container images
 
+What is a dockerfile:
+- A Dockerfile is a text file that contains the instructions we use to build and run a Docker image
+
+What is a dockerimage:
+- A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Docker images also act as the starting point when using Docker. An image is comparable to a snapshot in virtual machine (VM) environments. A Docker image has everything needed to run a containerized application, including code, config files, environment variables, libraries and runtimes. When the image is deployed to a Docker environment, it can be executed as a Docker container.
 
