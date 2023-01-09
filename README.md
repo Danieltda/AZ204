@@ -189,3 +189,31 @@ What is a dockerfile:
 What is a dockerimage:
 - A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Docker images also act as the starting point when using Docker. An image is comparable to a snapshot in virtual machine (VM) environments. A Docker image has everything needed to run a containerized application, including code, config files, environment variables, libraries and runtimes. When the image is deployed to a Docker environment, it can be executed as a Docker container.
 
+Azure Container Instances:
+- Azure Container Instances (ACI) is a great solution for any scenario that can operate in isolated containers, including simple applications, task automation, and build jobs
+
+Azure container instances:
+- Allocates resources such as CPUs, memory, and optionally GPUs (preview) to a container group by adding the resource requests of the instances in the group
+
+Azure container groups share:
+- IP address
+- Port namespace on that IP address
+
+Explanation on ARM/Bicep templates and YAML:
+- ARM/Bicep is the template to specificy the resource
+- YAML file to deploy the ARM/Bicep file/template
+- https://ochzhen.com/blog/deploy-azure-bicep-in-cicd-pipeline -> YAML - ARM/bicep
+
+What is a service principal:
+- An Azure service principal is an identity created for use with applications, hosted services, and automated tools to access Azure resources
+
+There are three type of service principal:
+- Application -> This type of service principal is the local representation, or application instance, of a global application object in a single tenant or directory. The service principal object defines what the app can actually do in the specific tenant, who can access the app, and what resources the app can access.
+- Managed identity -> Managed identities provide an identity for applications to use when connecting to resources that support Azure Active Directory authentication.
+- Legacy -> This type of service principal represents a legacy app, which is an app created before app registrations were introduced or an app created through legacy experiences.
+
+Permission types:
+- The Microsoft identity platform supports two types of permissions: delegated permissions and application permissions.
+- Delegated permissions -> For these apps, either the user or an administrator consents to the permissions that the app requests. The app is delegated with the permission to act as a signed-in user when it makes calls to the target resource.
+- Application permissions -> are used by apps that run without a signed-in user present, for example, apps that run as background services or daemons. Only an administrator can consent to application permissions.
+
