@@ -217,3 +217,53 @@ Permission types:
 - Delegated permissions -> For these apps, either the user or an administrator consents to the permissions that the app requests. The app is delegated with the permission to act as a signed-in user when it makes calls to the target resource.
 - Application permissions -> are used by apps that run without a signed-in user present, for example, apps that run as background services or daemons. Only an administrator can consent to application permissions.
 
+Three consent types:
+Applications in Microsoft identity platform rely on consent in order to gain access to necessary resources or APIs.
+- Static user content -> In the static user consent scenario, you must specify all the permissions it needs in the app's configuration in the Azure portal.
+- Incremental and dynamic user consent
+- Admin consent
+
+Microsoft Authentication Library:
+The Microsoft Authentication Library (MSAL) can be used to provide secure access to Microsoft Graph, other Microsoft APIs, third-party web APIs, or your own web API.
+- No need to directly use the OAuth libraries or code against the protocol in your application.
+- Acquires tokens on behalf of a user or on behalf of an application (when applicable to the platform).
+- Maintains a token cache and refreshes tokens for you when they are close to expire. You don't need to handle token expiration on your own.
+- Helps you specify which audience you want your application to sign in.
+- Helps you set up your application from configuration files.
+- Helps you troubleshoot your app by exposing actionable exceptions, logging, and telemetry.
+
+<img width="913" alt="Screenshot 2023-01-10 at 06 19 37" src="https://user-images.githubusercontent.com/39561427/211476292-ee00d9e6-031e-425a-99bd-fee17f2f05ec.png">
+
+Public client, and confidential client applications:
+- Public client applications: Are apps that run on devices or desktop computers or in a web browser. They're not trusted to safely keep application secrets, so they only access web APIs on behalf of the user. (They support only public client flows.) Public clients can't hold configuration-time secrets, so they don't have client secrets.
+- Confidential client applications: Are apps that run on servers (web apps, web API apps, or even service/daemon apps). They're considered difficult to access, and for that reason capable of keeping an application secret. Confidential clients can hold configuration-time secrets. Each instance of the client has a distinct configuration (including client ID and client secret).
+
+What is a shared access signature:
+- A shared access signature (SAS) is a URI that grants restricted access rights to Azure Storage resources. A shared access signature (SAS) is a signed URI that points to one or more storage resources and includes a token that contains a special set of query parameters. 
+
+Types of shared access signature:
+- User delegation SAS: A user delegation SAS is secured with Azure Active Directory credentials and also by the permissions specified for the SAS. A user delegation SAS applies to Blob storage only.
+- Service SAS: A service SAS is secured with the storage account key. A service SAS delegates access to a resource in the following Azure Storage services: Blob storage, Queue storage, Table storage, or Azure Files.
+- Account SAS: An account SAS is secured with the storage account key. An account SAS delegates access to resources in one or more of the storage services. All of the operations available via a service or user delegation SAS are also available via an account SAS.
+
+How shared access signature works:
+- When you use a SAS to access data stored in Azure Storage, you need two components. The first is a URI to the resource you want to access. The second part is a SAS token that you've created to authorize access to that resource.
+
+In a single URI, such as https://medicalrecords.blob.core.windows.net/patient-images/patient-116139-nq8z7f.jpg?sp=r&st=2020-01-20T11:42:32Z&se=2020-01-20T19:42:32Z&spr=https&sv=2019-02-02&sr=b&sig=SrW1HZ5Nb6MbRzTbXCaPm%2BJiSEn15tC91Y4umMPwVZs%3D, you can separate the URI from the SAS token as follows:
+
+URI: https://medicalrecords.blob.core.windows.net/patient-images/patient-116139-nq8z7f.jpg?
+SAS token: sp=r&st=2020-01-20T11:42:32Z&se=2020-01-20T19:42:32Z&spr=https&sv=2019-02-02&sr=b&sig=SrW1HZ5Nb6MbRzTbXCaPm%2BJiSEn15tC91Y4umMPwVZs%3D
+
+<img width="928" alt="Screenshot 2023-01-10 at 06 44 49" src="https://user-images.githubusercontent.com/39561427/211480340-6a1ef957-b36a-4f39-9bac-702a67612ea9.png">
+
+Microsoft Graph:
+- Microsoft Graph is the gateway to data and intelligence in Microsoft 365. It provides a unified programmability model that you can use to access the tremendous amount of data in Microsoft 365, Windows 10, and Enterprise Mobility + Security.
+
+In the Microsoft 365 platform, three main components facilitate the access and flow of data:
+- The Microsoft Graph API offers a single endpoint, https://graph.microsoft.com. You can use REST APIs or SDKs to access the endpoint. Microsoft Graph also includes a powerful set of services that manage user and device identity, access, compliance, security, and help protect organizations from data leakage or loss.
+- Microsoft Graph connectors work in the incoming direction, delivering data external to the Microsoft cloud into Microsoft Graph services and applications, to enhance Microsoft 365 experiences such as Microsoft Search. Connectors exist for many commonly used data sources such as Box, Google Drive, Jira, and Salesforce.
+- Microsoft Graph Data Connect provides a set of tools to streamline secure and scalable delivery of Microsoft Graph data to popular Azure data stores. The cached data serves as data sources for Azure development tools that you can use to build intelligent applications.
+
+Microsoft graph SDK's include two components:
+- Service Library -> The service library contains models and request builders that are generated from Microsoft Graph metadata to provide a rich, strongly typed, and discoverable experience when working with the many datasets available in Microsoft Graph.
+- Core Library -> The core library provides a set of features that enhance working with all the Microsoft Graph services. Embedded support for retry handling, secure redirects, transparent authentication, and payload compression, improve the quality of your application's interactions with Microsoft Graph, with no added complexity, while leaving you completely in control. The core library also provides support for common tasks such as paging through collections and creating batch requests.
