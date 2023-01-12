@@ -313,3 +313,63 @@ Response caching
 GZIP compression
 Servicing static content
 
+Azure event grid:
+- Azure Event Grid is an eventing backplane that enables event-driven, reactive programming. It uses the publish-subscribe model. Publishers emit events, but have no expectation about how the events are handled. Subscribers decide on which events they want to handle.
+
+Event grid connects sources and handlers:
+- ![functional-model](https://user-images.githubusercontent.com/39561427/211992409-6f160889-e4e6-4f2c-9089-6eb5ce20792b.png)
+
+Concepts in Azure event grid:
+- Events - What happened.
+- Event sources - Where the event took place.
+- Topics - The endpoint where publishers send events.
+- Event subscriptions - The endpoint or built-in mechanism to route events, sometimes to more than one handler. Subscriptions are also used by handlers to intelligently filter incoming events.
+- Event handlers - The app or service reacting to the event
+
+What is an event:
+- An event is the smallest amount of information that fully describes something that happened in the system.
+
+Topics:
+The event grid topic provides an endpoint where the source sends events. The publisher creates the event grid topic, and decides whether an event source needs one topic or more than one topic. A topic is used for a collection of related events. To respond to certain types of events, subscribers decide which topics to subscribe to.
+
+There are two topics:
+- System topics are built-in topics provided by Azure services. You don't see system topics in your Azure subscription because the publisher owns the topics, but you can subscribe to them. To subscribe, you provide information about the resource you want to receive events from. As long as you have access to the resource, you can subscribe to its events.
+- Custom topics are application and third-party topics. When you create or are assigned access to a custom topic, you see that custom topic in your subscription.
+
+Retry policy:
+You can customize the retry policy when creating an event subscription by using the following two configurations. An event will be dropped if either of the limits of the retry policy is reached.
+
+- Maximum number of attempts - The value must be an integer between 1 and 30. The default value is 30.
+- Event time-to-live (TTL) - The value must be an integer between 1 and 1440. The default value is 1440 minutes
+
+Output batching:
+You can configure Event Grid to batch events for delivery for improved HTTP performance in high-throughput scenarios. Batching is turned off by default and can be turned on per-subscription via the portal, CLI, PowerShell, or SDKs.
+
+Batched delivery has two settings:
+
+- Max events per batch - Maximum number of events Event Grid will deliver per batch. This number will never be exceeded, however fewer events may be delivered if no other events are available at the time of publish. Event Grid doesn't delay events to create a batch if fewer events are available. Must be between 1 and 5,000.
+
+- Preferred batch size in kilobytes - Target ceiling for batch size in kilobytes. Similar to max events, the batch size may be smaller if more events aren't available at the time of publish. It's possible that a batch is larger than the preferred batch size if a single event is larger than the preferred size. For example, if the preferred size is 4 KB and a 10-KB event is pushed to Event Grid, the 10-KB event will still be delivered in its own batch rather than being dropped.
+
+Dead-letter events:
+When Event Grid can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account. This process is known as dead-lettering. Event Grid dead-letters an event when one of the following conditions is met.
+
+- Event isn't delivered within the time-to-live period.
+- The number of tries to deliver the event exceeds the limit.
+
+Receive events by using webhooks:
+Webhooks are one of the many ways to receive events from Azure Event Grid. When a new event is ready, Event Grid service POSTs an HTTP request to the configured endpoint with the event in the request body.
+
+Endpoint validation with Event Grid events:
+If you're using any other type of endpoint, such as an HTTP trigger based Azure function, your endpoint code needs to participate in a validation handshake with Event Grid. Event Grid supports two ways of validating the subscription.
+
+- Synchronous handshake: At the time of event subscription creation, Event Grid sends a subscription validation event to your endpoint. The schema of this event is similar to any other Event Grid event. The data portion of this event includes a validationCode property. Your application verifies that the validation request is for an expected event subscription, and returns the validation code in the response synchronously. This handshake mechanism is supported in all Event Grid versions.
+
+- Asynchronous handshake: In certain cases, you can't return the ValidationCode in response synchronously. For example, if you use a third-party service (like Zapier or IFTTT), you can't programmatically respond with the validation code.
+
+Filter events:
+Three options for filitering -> 
+- Event types
+- Subject begins with or ends with
+- Advanced fields and operators
+ 
