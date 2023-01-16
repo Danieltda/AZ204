@@ -373,3 +373,21 @@ Three options for filitering ->
 - Subject begins with or ends with
 - Advanced fields and operators
  
+
+ Explore Azure monitor:
+ - Azure Monitor delivers a comprehensive solution for collecting, analyzing, and acting on telemetry from your cloud and on-premises environments.
+
+ Application insights:
+ - Application Insights monitors the availability, performance, and usage of your web applications whether they're hosted in the cloud or on-premises. It leverages the powerful data analysis platform in Azure Monitor to provide you with deep insights into your application's operations. It enables you to diagnose errors without waiting for a user to report them.
+
+ What application insights monitors:
+ - Request rates, response times, and failure rates - Find out which pages are most popular, at what times of day, and where your users are. See which pages perform best. If your response times and failure rates go high when there are more requests, then perhaps you have a resourcing problem.
+- Dependency rates, response times, and failure rates - Find out whether external services are slowing you down.
+- Exceptions - Analyze the aggregated statistics, or pick specific instances and drill into the stack trace and related requests. Both server and browser exceptions are reported.
+- Page views and load performance - reported by your users' browsers.
+- AJAX calls from web pages - rates, response times, and failure rates.
+- User and session counts.
+- Performance counters from your Windows or Linux server machines, such as CPU, memory, and network usage.
+- Host diagnostics from Docker or Azure.
+- Diagnostic trace logs from your app - so that you can correlate trace events with requests.
+- Custom events and metrics that you write yourself in the client or server code, to track business events such as items sold or games won.
