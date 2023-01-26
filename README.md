@@ -447,7 +447,7 @@ Azure supports two types of queue mechanisms
 - Service Bus queues -> Service Bus queues are part of a broader Azure messaging infrastructure that supports queuing, publish/subscribe, and more advanced integration patterns. They're designed to integrate applications or application components that may span multiple communication protocols, data contracts, trust domains, or network environments.
 - Storage queues -> Storage queues are part of the Azure Storage infrastructure. They allow you to store large numbers of messages. You access messages from anywhere in the world via authenticated calls using HTTP or HTTPS. A queue message can be up to 64 KB in size. A queue may contain millions of messages, up to the total capacity limit of a storage account. Queues are commonly used to create a backlog of work to process asynchronously.
 
-When to use Service Bus Queus:
+When to use Service Bus Queus:git a
 - Your solution needs to receive messages without having to poll the queue. With Service Bus, you can achieve it by using a long-polling receive operation using the TCP-based protocols that Service Bus supports.
 - Your solution requires the queue to provide a guaranteed first-in-first-out (FIFO) ordered delivery.
 - Your solution needs to support automatic duplicate detection.
@@ -464,3 +464,16 @@ Azure service bus:
 - Microsoft Azure Service Bus is a fully managed enterprise integration message broker. Service Bus can decouple applications and services. Data is transferred between different applications and services using messages. A message is a container decorated with metadata, and contains data. The data can be any kind of information, including structured data encoded with the common formats such as the following ones: JSON, XML, Apache Avro, Plain Text.
 
  
+Receive modes:
+- You can specify two different modes in which Service Bus receives messages: Receive and delete or Peek lock.
+
+Receive and delete
+- In this mode, when Service Bus receives the request from the consumer, it marks the message as being consumed and returns it to the consumer application. This mode is the simplest model. It works best for scenarios in which the application can tolerate not processing a message if a failure occurs. For example, consider a scenario in which the consumer issues the receive request and then crashes before processing it. As Service Bus marks the message as being consumed, the application begins consuming messages upon restart. It will miss the message that it consumed before the crash.
+
+Peek lock
+- In this mode, the receive operation becomes two-stage, which makes it possible to support applications that can't tolerate missing messages.
+
+- Finds the next message to be consumed, locks it to prevent other consumers from receiving it, and then, return the message to the application.
+- After the application finishes processing the message, it requests the Service Bus service to complete the second stage of the receive process. Then, the service marks the message as being consumed.
+
+If the application is unable to process the message for some reason, it can request the Service Bus service to abandon the message. Service Bus unlocks the message and makes it available to be received again, either by the same consumer or by another competing consumer. Secondly, there's a timeout associated with the lock. If the application fails to process the message before the lock timeout expires, Service Bus unlocks the message and makes it available to be received again.
