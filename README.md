@@ -501,3 +501,12 @@ How Azure Content Delivery Network works:
 5. Additional users can then request the same file by using the same URL that Alice used, and can also be directed to the same POP.
 
 6. If the TTL for the file hasn't expired, the POP edge server returns the file directly from the cache. This process results in a faster, more responsive user experience.
+
+----------
+
+Controlling caching behavior:
+
+- Caching rules. Caching rules can be either global (apply to all content from a specified endpoint) or custom. Custom rules apply to specific paths and file extensions.
+
+- Query string caching. Query string caching enables you to configure how Azure CDN responds to a query string. Query string caching has no effect on files that can't be cached.
+
