@@ -510,3 +510,24 @@ Controlling caching behavior:
 
 - Query string caching. Query string caching enables you to configure how Azure CDN responds to a query string. Query string caching has no effect on files that can't be cached.
 
+
+------
+
+- Azure Storage events allow applications to react to events. Common Blob storage event scenarios include image or video processing, search indexing, or any file- oriented workflow.
+Events are pushed using Azure Event Grid to subscribers such as Azure Functions, Azure Logic Apps, or even to your own http listener.
+Note: Only storage accounts of kind StorageV2 (general purpose v2) and BlobStorage support event integration. Storage (general purpose v1) does not support integration with Event Grid.
+
+- The purpose of the change feed is to provide transaction logs of all the changes that occur to the blobs and the blob metadata in your storage account. The change feed provides ordered, guaranteed, durable, immutable, read-only log of these changes. Client applications can read these logs at any time, either in streaming or in batch mode. The change feed enables you to build efficient and scalable solutions that process change events that occur in your Blob Storage account at a low cost.
+
+- Box 1: CMD [..]
+Cmd starts a new instance of the command interpreter, Cmd.exe.
+Syntax: CMD <string>
+Specifies the command you want to carry out.
+Box 2: FROM microsoft/aspnetcore-build:latest
+
+Box 3: WORKDIR /apps/ContosoApp -
+Bxo 4: COPY ./ .
+Box 5: RUN powershell ./setupScript.ps1
+
+- 
+
