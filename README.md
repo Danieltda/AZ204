@@ -529,5 +529,26 @@ Box 3: WORKDIR /apps/ContosoApp -
 Bxo 4: COPY ./ .
 Box 5: RUN powershell ./setupScript.ps1
 
-- 
+-------------
 
+- Box 1: Azure Powershell -
+Creating an image directly from the VM ensures that the image includes all of the disks associated with the VM, including the OS disk and any data disks.
+Before you begin, make sure that you have the latest version of the Azure PowerShell module.
+You use Sysprep to generalize the virtual machine, then use Azure PowerShell to create the image.
+
+- Box 2: Azure Blob Storage -
+You can store images in Azure Blob Storage.
+
+--------------
+
+- A: In Azure, you can run your functions directly from a deployment package file in your function app. The other option is to deploy your files in the d:\home\site
+\wwwroot directory of your function app (see A above).
+To enable your function app to run from a package, you just add a WEBSITE_RUN_FROM_PACKAGE setting to your function app settings.
+Note: The host.json metadata file contains global configuration options that affect all functions for a function app.
+- D: To customize your deployment, include a .deployment file in the repository root.
+You just need to add a file to the root of your repository with the name .deployment and the content:
+[config]
+command = YOUR COMMAND TO RUN FOR DEPLOYMENT
+this command can be just running a script (batch file) that has all that is required for your deployment, like copying files from the repository to the web root directory for example.
+
+-----
