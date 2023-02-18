@@ -552,3 +552,56 @@ command = YOUR COMMAND TO RUN FOR DEPLOYMENT
 this command can be just running a script (batch file) that has all that is required for your deployment, like copying files from the repository to the web root directory for example.
 
 -----
+
+You have two Hyper-V hosts named Host1 and Host2. Host1 has an Azure virtual machine named VM1 that was deployed by using a custom Azure Resource
+Manager template.
+You need to move VM1 to Host2.
+What should you do?
+
+C. From the Redeploy blade, click Redeploy. Most Voted
+
+
+----------
+
+
+Your company has an Azure Kubernetes Service (AKS) cluster that you manage from an Azure AD-joined device. The cluster is located in a resource group.
+Developers have created an application named MyApp. MyApp was packaged into a container image.
+You need to deploy the YAML manifest file for the application.
+Solution: You install the Azure CLI on the device and run the kubectl apply `"f myapp.yaml command.
+Does this meet the goal?
+
+A. Yes, kubectl apply -f myapp.yaml applies a configuration change to a resource from a file or stdin.
+
+
+---------------
+
+Your company has a web app named WebApp1.
+You use the WebJobs SDK to design a triggered App Service background task that automatically invokes a function in the code every time new data is received in a queue.
+You are preparing to configure the service processes a queue data item.
+Which of the following is the service you should use?
+
+- WebJobs, Usually you'll host the WebJobs SDK in Azure WebJobs, but you can also run your jobs in a Worker Role. The Azure WebJobs feature of Azure Web Apps provides an easy way for you to run programs such as services or background tasks in a Web App.
+
+-----------
+
+Your company has an Azure subscription.
+You need to deploy a number of Azure virtual machines to the subscription by using Azure Resource Manager (ARM) templates. The virtual machines will be included in a single availability set.
+You need to ensure that the ARM template allows for as many virtual machines as possible to remain accessible in the event of fabric failure or maintenance.
+Which of the following is the value that you should configure for the platformFaultDomainCount property?
+
+- Max Value, The number of fault domains for managed availability sets varies by region - either two or three per region.
+
+------------
+
+This question requires that you evaluate the underlined text to determine if it is correct.
+You company has an on-premises deployment of MongoDB, and an Azure Cosmos DB account that makes use of the MongoDB API.
+You need to devise a strategy to migrate MongoDB to the Azure Cosmos DB account.
+You include the Data Management Gateway tool in your migration strategy.
+Instructions: Review the underlined text. If it makes the statement correct, select `No change required.` If the statement is incorrect, select the answer choice that makes the statement correct.
+
+-  mongorestore
+
+----------
+
+
+
