@@ -603,5 +603,37 @@ Instructions: Review the underlined text. If it makes the statement correct, sel
 
 ----------
 
+You are developing an e-Commerce Web App.
+You want to use Azure Key Vault to ensure that sign-ins to the e-Commerce Web App are secured by using Azure App Service authentication and Azure Active
+Directory (AAD).
+What should you do on the e-Commerce Web App?
+
+- Enable Managed Service Identity (MSI).
+
+
+
+------------
+
+You have an Azure Active Directory (Azure AD) tenant.
+You want to implement multi-factor authentication by making use of a conditional access policy. The conditional access policy must be applied to all users when they access the Azure portal.
+Which three settings should you configure?
+
+- Box 1:
+The conditional access policy must be applied or assigned to Users and Groups.
+Box 2:
+The conditional access policy must be applied when users access the Azure portal, which is a cloud app. That is: Microsoft Azure Management
+Box 3:
+Access control must require multi-factor authentication when granting access
+
+-----------
+
+You manage an Azure SQL database that allows for Azure AD authentication.
+You need to make sure that database developers can connect to the SQL database via Microsoft SQL Server Management Studio (SSMS). You also need to make sure the developers use their on-premises Active Directory account for authentication. Your strategy should allow for authentication prompts to be kept to a minimum.
+Which of the following should you implement?
+
+- Active Directory integrated authentication
+
+-----
+
 
 
