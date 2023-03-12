@@ -635,5 +635,25 @@ Which of the following should you implement?
 
 -----
 
+You are developing an application to transfer data between on-premises file servers and Azure Blob storage. The application stores keys, secrets, and certificates in Azure Key Vault and makes use of the Azure Key Vault APIs.
+You want to configure the application to allow recovery of an accidental deletion of the key vault or key vault objects for 90 days after deletion.
+
+What should you do?
+
+- B. Run the az keyvault update --enable-soft-delete true --enable-purge-protection true CLI. Most Voted
+
+
+-----
+
+
+You are configuring a web app that delivers streaming video to users. The application makes use of continuous integration and deployment.
+You need to ensure that the application is highly available and that the users' streaming experience is constant. You also want to configure the application to store data in a geographic location that is nearest to the user.
+Solution: You include the use of an Azure Content Delivery Network (CDN) in your design.
+
+
+- Yes
+
+--------
+
 
 
