@@ -655,5 +655,89 @@ Solution: You include the use of an Azure Content Delivery Network (CDN) in your
 
 --------
 
+You are configuring a web app that delivers streaming video to users. The application makes use of continuous integration and deployment.
+You need to ensure that the application is highly available and that the users' streaming experience is constant. You also want to configure the application to store data in a geographic location that is nearest to the user.
+Solution: You include the use of a Storage Area Network (SAN) in your design.
+Does the solution meet the goal?
+
+- No
+
+--------
+
+You develop a Web App on a tier D1 app service plan.
+You notice that page load times increase during periods of peak traffic.
+You want to implement automatic scaling when CPU load is above 80 percent. Your solution must minimize costs.
+What should you do first?
+
+- C. Switch to the Standard App Service tier plan. 
+
+Configure the web app to the Standard App Service Tier. The Standard tier supports auto-scaling, and we should minimize the cost. We can then enable autoscaling on the web app, add a scale rule and add a Scale condition.
+
+---------
+
+Your company's Azure subscription includes an Azure Log Analytics workspace.
+Your company has a hundred on-premises servers that run either Windows Server 2012 R2 or Windows Server 2016, and is linked to the Azure Log Analytics workspace. The Azure Log Analytics workspace is set up to gather performance counters associated with security from these linked servers.
+You must configure alerts based on the information gathered by the Azure Log Analytics workspace.
+You have to make sure that alert rules allow for dimensions, and that alert creation time should be kept to a minimum. Furthermore, a single alert notification must be created when the alert is created and when the alert is resolved.
+You need to make use of the necessary signal type when creating the alert rules.
+Which of the following is the option you should use?
+
+- C. The Metric signal type.
+
+Metric alerts in Azure Monitor provide a way to get notified when one of your metrics cross a threshold. Metric alerts work on a range of multi-dimensional platform metrics, custom metrics, Application Insights standard and custom metrics.
+Note: Signals are emitted by the target resource and can be of several types. Metric, Activity log, Application Insights, and Log.
+
+---------
+
+You are developing a .NET Core MVC application that allows customers to research independent holiday accommodation providers.
+You want to implement Azure Search to allow the application to search the index by using various criteria to locate documents related to accommodation.
+You want the application to allow customers to search the index by using regular expressions.
+What should you do?
+
+- B. Configure the QueryType property of the SearchParameters class.
+
+---------
+
+You are a developer at your company.
+You need to update the definitions for an existing Logic App.
+What should you use?
+
+- B. the Logic App Code View
+
+Edit JSON - Azure portal -
+1. Sign in to the Azure portal.
+2. From the left menu, choose All services. In the search box, find "logic apps", and then from the results, select your logic app.
+3. On your logic app's menu, under Development Tools, select Logic App Code View.
+4. The Code View editor opens and shows your logic app definition in JSON format
+
+
+----------
+
+Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result. Establish if the solution satisfies the requirements.
+You are developing a solution for a public facing API.
+The API back end is hosted in an Azure App Service instance. You have implemented a RESTful service for the API back end.
+You must configure back-end authentication for the API Management service instance.
+Solution: You configure Basic gateway credentials for the Azure resource.
+Does the solution meet the goal?
+
+-  B. No
+
+API Management allows to secure access to the back-end service of an API using client certificates.
+
+----------
+
+You are developing an application that applies a set of governance policies for internal and external services, as well as for applications.
+You develop a stateful ASP.NET Core 2.1 web application named PolicyApp and deploy it to an Azure App Service Web App. The PolicyApp reacts to events from
+Azure Event Grid and performs policy actions based on those events.
+You have the following requirements:
+✑ Authentication events must be used to monitor users when they sign in and sign out.
+✑ All authentication events must be processed by PolicyApp.
+✑ Sign outs must be processed as fast as possible.
+What should you do?
+
+- D. Add a subject prefix to sign-out events. Create an Azure Event Grid subscription. Configure the subscription to use the subjectBeginsWith filter.
+
+-------
+
 
 
