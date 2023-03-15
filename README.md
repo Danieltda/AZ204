@@ -739,5 +739,41 @@ What should you do?
 
 -------
 
+You are developing a C++ application that compiles to a native application named process.exe. The application accepts images as input and returns images in one of the following image formats: GIF, PNG, or JPEG.
+You must deploy the application as an Azure Function.
+You need to configure the function and host json files.
+How should you complete the json files? To answer, select the appropriate options in the answer area.
+NOTE: Each correct selection is worth one point.
+Hot Area:
+
+- Box 1: "type": "http"
+Box 2: "customHandler": { "description":{
+A custom handler is defined by configuring the host.json file with details on how to run the web server via the customHandler section.
+The customHandler section points to a target as defined by the defaultExecutablePath.
+Example:
+"customHandler": {
+"description": {
+"defaultExecutablePath": "handler.exe"
+Box 3: "enableForwardingHttpRequest": false
+
+
+-------
+
+You are building a software-as-a-service (SaaS) application that analyzes DNA data that will run on Azure virtual machines (VMs) in an availability zone. The data is stored on managed disks attached to the VM. The performance of the analysis is determined by the speed of the disk attached to the VM.
+
+You have the following requirements:
+
+• The application must be able to quickly revert to the previous day’s data if a systemic error is detected.
+• The application must minimize downtime in the case of an Azure datacenter outage.
+
+You need to provision the managed disk for the VM to maximize performance while meeting the requirements.
+
+Which type of Azure Managed Disk should you use?
+
+- Disk type --> Premium SSD
+- Geo redundant storage (GRS)
+
+-------------
+
 
 
