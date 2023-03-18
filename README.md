@@ -775,5 +775,86 @@ Which type of Azure Managed Disk should you use?
 
 -------------
 
+You are implementing a software as a service (SaaS) ASP.NET Core web service that will run as an Azure Web App. The web service will use an on-premises
+SQL Server database for storage. The web service also includes a WebJob that processes data updates. Four customers will use the web service.
+✑ Each instance of the WebJob processes data for a single customer and must run as a singleton instance.
+✑ Each deployment must be tested by using deployment slots prior to serving production data.
+✑ Azure costs must be minimized.
+✑ Azure resources must be located in an isolated network.
+You need to configure the App Service plan for the Web App.
+How should you configure the App Service plan? To answer, select the appropriate settings in the answer area.
 
+- Number of VM instances: 4 -
+You are not charged extra for deployment slots.
+
+- Pricing tier: Isolated -
+The App Service Environment (ASE) is a powerful feature offering of the Azure App Service that gives network isolation and improved scale capabilities. It is essentially a deployment of the Azure App Service into a subnet of a customer's Azure Virtual Network (VNet).
+
+----------
+
+You are a developer for a software as a service (SaaS) company that uses an Azure Function to process orders. The Azure Function currently runs on an Azure
+Function app that is triggered by an Azure Storage queue.
+You are preparing to migrate the Azure Function to Kubernetes using Kubernetes-based Event Driven Autoscaling (KEDA).
+You need to configure Kubernetes Custom Resource Definitions (CRD) for the Azure Function.
+Which CRDs should you configure?
+
+- Box 1: Deployment -
+To deploy Azure Functions to Kubernetes use the func kubernetes deploy command has several attributes that directly control how our app scales, once it is deployed to Kubernetes.
+
+Box 2: ScaledObject -
+With --polling-interval, we can control the interval used by KEDA to check Azure Service Bus Queue for messages.
+Example of ScaledObject with polling interval
+apiVersion: keda.k8s.io/v1alpha1
+kind: ScaledObject
+metadata:
+name: transformer-fn
+namespace: tt
+labels:
+deploymentName: transformer-fn
+spec:
+scaleTargetRef:
+deploymentName: transformer-fn
+pollingInterval: 5
+minReplicaCount: 0
+maxReplicaCount: 100
+
+Box 3: Secret -
+Store connection strings in Kubernetes Secrets.
+Example: to create the Secret in our demo Namespace:
+# create the k8s demo namespace
+kubectl create namespace tt
+# grab connection string from Azure Service Bus
+KEDA_SCALER_CONNECTION_STRING=$(az servicebus queue authorization-rule keys list \
+-g $RG_NAME \
+--namespace-name $SBN_NAME \
+--queue-name inbound \
+-n keda-scaler \
+--query "primaryConnectionString" \
+-o tsv)
+# create the kubernetes secret
+kubectl create secret generic tt-keda-auth \
+--from-literal KedaScaler=$KEDA_SCALER_CONNECTION_STRING \
+--namespace tt
+
+------
+
+You develop a software as a service (SaaS) offering to manage photographs. Users upload photos to a web service which then stores the photos in Azure
+Storage Blob storage. The storage account type is General-purpose V2.
+When photos are uploaded, they must be processed to produce and save a mobile-friendly version of the image. The process to produce a mobile-friendly version of the image must start in less than one minute.
+You need to design the process that starts the photo processing.
+Solution: Trigger the photo processing from Blob storage events.
+Does the solution meet the goal?
+
+- No
+
+-----------------
+
+You develop and deploy an Azure App Service API app to a Windows-hosted deployment slot named Development. You create additional deployment slots named Testing and Production. You enable auto swap on the Production deployment slot.
+You need to ensure that scripts run and resources are available before a swap operation occurs.
+Solution: Update the web.config file to include the applicationInitialization configuration element. Specify custom initialization actions to run the scripts.
+Does the solution meet the goal?
+
+- Yes
+
+-----
 
