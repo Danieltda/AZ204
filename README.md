@@ -858,3 +858,107 @@ Does the solution meet the goal?
 
 -----
 
+You develop and deploy an Azure App Service API app to a Windows-hosted deployment slot named Development. You create additional deployment slots named Testing and Production. You enable auto swap on the Production deployment slot.
+You need to ensure that scripts run and resources are available before a swap operation occurs.
+Solution: Enable auto swap for the Testing slot. Deploy the app to the Testing slot.
+
+- No, Some apps might require custom warm-up actions before the swap. The applicationInitialization configuration element in web.config lets you specify custom initialization actions. The swap operation waits for this custom warm-up to finish before swapping with the target slot. Here's a sample web.config fragment.
+<system.webServer>
+<applicationInitialization>
+<add initializationPage="/" hostName="[app hostname]" />
+<add initializationPage="/Home/About" hostName="[app hostname]" />
+</applicationInitialization>
+</system.webServer>
+Reference:
+https://docs.microsoft.com/en-us/azure/app-service/deploy-staging-slots#troubleshoot-swaps
+
+-------
+
+You are developing an Azure Web App. You configure TLS mutual authentication for the web app.
+You need to validate the client certificate in the web app.
+
+- HTTP request header
+- Base64
+
+----------
+
+You are developing a Docker/Go using Azure App Service Web App for Containers. You plan to run the container in an App Service on Linux. You identify a
+Docker container image to use.
+None of your current resource groups reside in a location that supports Linux. You must minimize the number of resource groups required.
+You need to create the application and perform an initial deployment.
+Which three Azure CLI commands should you use to develop the solution?
+
+- You can host native Linux applications in the cloud by using Azure Web Apps. To create a Web App for Containers, you must run Azure CLI commands that create a group, then a service plan, and finally the web app itself.
+
+Step 1: az group create -
+In the Cloud Shell, create a resource group with the az group create command.
+Step 2: az appservice plan create
+In the Cloud Shell, create an App Service plan in the resource group with the az appservice plan create command.
+
+Step 3: az webapp create -
+In the Cloud Shell, create a web app in the myAppServicePlan App Service plan with the az webapp create command. Don't forget to replace with a unique app name, and <docker-ID> with your Docker ID.
+
+---------
+
+ou are developing a serverless Java application on Azure. You create a new Azure Key Vault to work with secrets from a new Azure Functions application.
+The application must meet the following requirements:
+✑ Reference the Azure Key Vault without requiring any changes to the Java code.
+✑ Dynamically add and remove instances of the Azure Functions host based on the number of incoming application events.
+✑ Ensure that instances are perpetually warm to avoid any cold starts.
+✑ Connect to a VNet.
+✑ Authentication to the Azure Key Vault instance must be removed if the Azure Function application is deleted.
+You need to grant the Azure Functions application access to the Azure Key Vault.
+Which three actions should you perform in sequence?
+
+- Step 1: Create the Azure Functions app with a Consumption plan type.
+Use the Consumption plan for serverless.
+Step 2: Create a system-assigned managed identity for the application.
+Create a system-assigned managed identity for your application.
+Key Vault references currently only support system-assigned managed identities. User-assigned identities cannot be used.
+Step 3: Create an access policy in Key Vault for the application identity.
+Create an access policy in Key Vault for the application identity you created earlier. Enable the "Get" secret permission on this policy. Do not configure the
+"authorized application" or applicationId settings, as this is not compatible with a managed identity.
+Reference:
+https://docs.microsoft.com/en-us/azure/app-service/app-service-key-vault-references
+
+---------------
+
+You develop a website. You plan to host the website in Azure. You expect the website to experience high traffic volumes after it is published.
+You must ensure that the website remains available and responsive while minimizing cost.
+You need to deploy the website.
+What should you do?
+
+- D. Deploy the website to an App Service that uses the Standard service tier. Configure the App Service plan to automatically scale when the CPU load is high. Most Voted
+
+
+---------
+
+A company is developing a Java web app. The web app code is hosted in a GitHub repository located at https://github.com/Contoso/webapp.
+The web app must be evaluated before it is moved to production. You must deploy the initial code release to a deployment slot named staging.
+You need to create the web app and deploy the code.
+How should you complete the commands? 
+
+- Box 1: group -
+# Create a resource group.
+az group create --location westeurope --name myResourceGroup
+
+Box 2: appservice plan -
+# Create an App Service plan in STANDARD tier (minimum required by deployment slots). az appservice plan create --name $webappname --resource-group myResourceGroup --sku S1
+
+Box 3: webapp -
+# Create a web app.
+az webapp create --name $webappname --resource-group myResourceGroup \
+--plan $webappname
+
+Box 4: webapp deployment slot -
+#Create a deployment slot with the name "staging".
+az webapp deployment slot create --name $webappname --resource-group myResourceGroup \
+--slot staging
+
+Box 5: webapp deployment source -
+# Deploy sample code to "staging" slot from GitHub.
+az webapp deployment source config --name $webappname --resource-group myResourceGroup \
+--slot staging --repo-url $gitrepo --branch master --manual-integration
+
+
+--------------
