@@ -962,3 +962,55 @@ az webapp deployment source config --name $webappname --resource-group myResourc
 
 
 --------------
+
+You develop an HTTP triggered Azure Function app to process Azure Storage blob data. The app is triggered using an output binding on the blob.
+The app continues to time out after four minutes. The app must process the blob data.
+You need to ensure the app does not time out and processes the blob data.
+Solution: Use the Durable Function async pattern to process the blob data.
+Does the solution meet the goal?
+
+- B. No -> Instead pass the HTTP trigger payload into an Azure Service Bus queue to be processed by a queue trigger function and return an immediate HTTP success response.
+Note: Large, long-running functions can cause unexpected timeout issues.
+
+--------
+
+You develop an HTTP triggered Azure Function app to process Azure Storage blob data. The app is triggered using an output binding on the blob.
+The app continues to time out after four minutes. The app must process the blob data.
+You need to ensure the app does not time out and processes the blob data.
+Solution: Pass the HTTP trigger payload into an Azure Service Bus queue to be processed by a queue trigger function and return an immediate HTTP success response.
+Does the solution meet the goal?
+
+- A, Large, long-running functions can cause unexpected timeout issues. General best practices include:
+Whenever possible, refactor large functions into smaller function sets that work together and return responses fast. For example, a webhook or HTTP trigger function might require an acknowledgment response within a certain time limit; it's common for webhooks to require an immediate response. You can pass the
+HTTP trigger payload into a queue to be processed by a queue trigger function. This approach lets you defer the actual work and return an immediate response.
+
+--------
+
+After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.
+You develop an HTTP triggered Azure Function app to process Azure Storage blob data. The app is triggered using an output binding on the blob.
+The app continues to time out after four minutes. The app must process the blob data.
+You need to ensure the app does not time out and processes the blob data.
+Solution: Configure the app to use an App Service hosting plan and enable the Always On setting.
+
+- No, Instead pass the HTTP trigger payload into an Azure Service Bus queue to be processed by a queue trigger function and return an immediate HTTP success response.
+Note: Large, long-running functions can cause unexpected timeout issues. General best practices include:
+Whenever possible, refactor large functions into smaller function sets that work together and return responses fast. For example, a webhook or HTTP trigger function might require an acknowledgment response within a certain time limit; it's common for webhooks to require an immediate response. You can pass the
+HTTP trigger payload into a queue to be processed by a queue trigger function. This approach lets you defer the actual work and return an immediate response.
+
+
+--------
+
+
+You develop a software as a service (SaaS) offering to manage photographs. Users upload photos to a web service which then stores the photos in Azure
+Storage Blob storage. The storage account type is General-purpose V2.
+When photos are uploaded, they must be processed to produce and save a mobile-friendly version of the image. The process to produce a mobile-friendly version of the image must start in less than one minute.
+You need to design the process that starts the photo processing.
+Solution: Move photo processing to an Azure Function triggered from the blob upload.
+Does the solution meet the goal?
+
+- A, Yes -> Azure Storage events allow applications to react to events. Common Blob storage event scenarios include image or video processing, search indexing, or any file- oriented workflow.
+Events are pushed using Azure Event Grid to subscribers such as Azure Functions, Azure Logic Apps, or even to your own http listener.
+Note: Only storage accounts of kind StorageV2 (general purpose v2) and BlobStorage support event integration. Storage (general purpose v1) does not support integration with Event Grid.
+
+--------
+
