@@ -1014,3 +1014,141 @@ Note: Only storage accounts of kind StorageV2 (general purpose v2) and BlobStora
 
 --------
 
+You are developing an application that uses Azure Blob storage.
+The application must read the transaction logs of all the changes that occur to the blobs and the blob metadata in the storage account for auditing purposes. The changes must be in the order in which they occurred, include only create, update, delete, and copy operations and be retained for compliance reasons.
+You need to process the transaction logs asynchronously.
+What should you do?
+
+- B. Enable the change feed on the storage account and process all changes for available events. Most Voted
+
+------------
+
+You plan to create a Docker image that runs an ASP.NET Core application named ContosoApp. You have a setup script named setupScript.ps1 and a series of application files including ContosoApp.dll.
+You need to create a Dockerfile document that meets the following requirements:
+✑ Call setupScripts.ps1 when the container is built.
+✑ Run ContosoApp.dll when the container starts.
+The Dockerfile document must be created in the same folder where ContosoApp.dll and setupScript.ps1 are stored.
+Which five commands should you use to develop the solution? To answer, move the appropriate commands from the list of commands to the answer area and arrange them in the correct order.
+
+- FROM
+- WORKDIR
+- COPY
+- RUN
+- CMD
+
+------
+
+You are developing an Azure Function App that processes images that are uploaded to an Azure Blob container.
+Images must be processed as quickly as possible after they are uploaded, and the solution must minimize latency. You create code to process images when the
+Function App is triggered.
+You need to configure the Function App.
+
+- D. Use an App Service plan. Configure the Function App to use an Azure Blob Storage trigger.
+
+----------
+
+You are configuring a new development environment for a Java application.
+The environment requires a Virtual Machine Scale Set (VMSS), several storage accounts, and networking components.
+The VMSS must not be created until the storage accounts have been successfully created and an associated load balancer and virtual network is configured.
+How should you complete the Azure Resource Manager template? To answer, select the appropriate options in the answer area.
+
+- Box 1: copyIndex -
+Notice that the name of each resource includes the copyIndex() function, which returns the current iteration in the loop. copyIndex() is zero-based.
+
+Box 2: copy -
+By adding the copy element to the resources section of your template, you can dynamically set the number of resources to deploy.
+
+Box 3: dependsOn -
+Example:
+"type": "Microsoft.Compute/virtualMachineScaleSets",
+"apiVersion": "2020-06-01",
+"name": "[variables('namingInfix')]",
+"location": "[parameters('location')]",
+"sku": {
+"name": "[parameters('vmSku')]",
+"tier": "Standard",
+"capacity": "[parameters('instanceCount')]"
+},
+"dependsOn": [
+"[resourceId('Microsoft.Network/loadBalancers', variables('loadBalancerName'))]",
+"[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
+],
+
+--------
+
+You are developing a solution for a hospital to support the following use cases:
+✑ The most recent patient status details must be retrieved even if multiple users in different locations have updated the patient record.
+✑ Patient health monitoring data retrieved must be the current version or the prior version.
+✑ After a patient is discharged and all charges have been assessed, the patient billing record contains the final charges.
+You provision a Cosmos DB NoSQL database and set the default consistency level for the database account to Strong. You set the value for Indexing Mode to
+Consistent.
+You need to minimize latency and any impact to the availability of the solution. You must override the default consistency level at the query level to meet the required consistency guarantees for the scenarios.
+
+- Box 1: Strong -
+Strong: Strong consistency offers a linearizability guarantee. The reads are guaranteed to return the most recent committed version of an item. A client never sees an uncommitted or partial write. Users are always guaranteed to read the latest committed write.
+
+Box 2: Bounded staleness -
+Bounded staleness: The reads are guaranteed to honor the consistent-prefix guarantee. The reads might lag behind writes by at most "K" versions (that is
+"updates") of an item or by "t" time interval. When you choose bounded staleness, the "staleness" can be configured in two ways:
+The number of versions (K) of the item
+The time interval (t) by which the reads might lag behind the writes
+
+Box 3: Eventual -
+Eventual: There's no ordering guarantee for reads. In the absence of any further writes, the replicas eventually converge.
+Incorrect Answers:
+Consistent prefix: Updates that are returned contain some prefix of all the updates, with no gaps. Consistent prefix guarantees that reads never see out-of-order writes.
+
+-------
+
+You are configuring a development environment for your team. You deploy the latest Visual Studio image from the Azure Marketplace to your Azure subscription.
+The development environment requires several software development kits (SDKs) and third-party components to support application development across the organization. You install and customize the deployed virtual machine (VM) for your development team. The customized VM must be saved to allow provisioning of a new team member development environment.
+You need to save the customized VM for future provisioning.
+Which tools or services should you use? To answer, select the appropriate options in the answer area.
+
+- Box 1: Azure Powershell -
+Creating an image directly from the VM ensures that the image includes all of the disks associated with the VM, including the OS disk and any data disks.
+Before you begin, make sure that you have the latest version of the Azure PowerShell module.
+You use Sysprep to generalize the virtual machine, then use Azure PowerShell to create the image.
+
+Box 2: Azure Blob Storage -
+You can store images in Azure Blob Storage.
+
+-------
+You are preparing to deploy a website to an Azure Web App from a GitHub repository. The website includes static content generated by a script.
+You plan to use the Azure Web App continuous deployment feature.
+You need to run the static generation script before the website starts serving traffic.
+What are two possible ways to achieve this goal? Each correct answer presents a complete solution.
+
+- B. Add a PreBuild target in the websites csproj project file that runs the static content generation script.
+- D. Create a file named .deployment in the root of the repository that calls a script which generates the static content and deploys the website.
+
+--------------
+
+
+You are developing an application to use Azure Blob storage. You have configured Azure Blob storage to include change feeds.
+A copy of your storage account must be created in another region. Data must be copied from the current storage account to the new storage account directly between the storage servers.
+You need to create a copy of the storage account in another region and copy the data.
+In which order should you perform the actions? To answer, move all actions from the list of actions to the answer area and arrange them in the correct order.
+
+- To move a storage account, create a copy of your storage account in another region. Then, move your data to that account by using AzCopy, or another tool of your choice.
+The steps are:
+✑ Export a template.
+✑ Modify the template by adding the target region and storage account name.
+✑ Deploy the template to create the new storage account.
+✑ Configure the new storage account.
+✑ Move data to the new storage account.
+✑ Delete the resources in the source region
+
+------
+
+You are preparing to deploy an Azure virtual machine (VM)-based application.
+The VMs that run the application have the following requirements:
+✑ When a VM is provisioned the firewall must be automatically configured before it can access Azure resources.
+✑ Supporting services must be installed by using an Azure PowerShell script that is stored in Azure Storage.
+You need to ensure that the requirements are met.
+
+- Firewall configuration : Run Command
+- Support services script : Custom script extension
+
+-------
+
