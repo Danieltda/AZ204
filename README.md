@@ -1152,3 +1152,68 @@ You need to ensure that the requirements are met.
 
 -------
 
+A company is developing a Node.js web app. The web app code is hosted in a GitHub repository located at https://github.com/TailSpinToys/webapp.
+The web app must be reviewed before it is moved to production. You must deploy the initial code release to a deployment slot named review.
+You need to create the web app and deploy the code.
+How should you complete the commands? To answer, select the appropriate options in the answer area.
+
+- Box 1: New-AzResourceGroup -
+The New-AzResourceGroup cmdlet creates an Azure resource group.
+
+Box 2: New-AzAppServicePlan -
+The New-AzAppServicePlan cmdlet creates an Azure App Service plan in a given location
+
+Box 3: New-AzWebApp -
+The New-AzWebApp cmdlet creates an Azure Web App in a given a resource group
+
+Box 4: New-AzWebAppSlot -
+The New-AzWebAppSlot cmdlet creates an Azure Web App slot.
+
+------
+You are developing an application that needs access to an Azure virtual machine (VM).
+The access lifecycle for the application must be associated with the VM service instance.
+You need to enable managed identity for the VM.
+How should you complete the PowerShell segment? To answer, select the appropriate options in the answer area.
+
+- Identity Type
+- Systemassigned
+
+----------
+You develop a software as a service (SaaS) offering to manage photographs. Users upload photos to a web service which then stores the photos in Azure
+Storage Blob storage. The storage account type is General-purpose V2.
+When photos are uploaded, they must be processed to produce and save a mobile-friendly version of the image. The process to produce a mobile-friendly version of the image must start in less than one minute.
+You need to design the process that starts the photo processing.
+Solution: Create an Azure Function app that uses the Consumption hosting model and that is triggered from the blob upload.
+
+- B. No
+
+-----------
+
+You develop and deploy an Azure App Service API app to a Windows-hosted deployment slot named Development. You create additional deployment slots named Testing and Production. You enable auto swap on the Production deployment slot.
+You need to ensure that scripts run and resources are available before a swap operation occurs.
+Solution: Update the app with a method named statuscheck to run the scripts. Update the app settings for the app. Set the
+WEBSITE_SWAP_WARMUP_PING_PATH and WEBSITE_SWAP_WARMUP_PING_STATUSES with a path to the new method and appropriate response codes.
+Does the solution meet the goal?
+
+- Yes
+
+-------
+
+You are developing an Azure Function app.
+The app must meet the following requirements:
+✑ Enable developers to write the functions by using the Rust language.
+✑ Declaratively connect to an Azure Blob Storage account.
+You need to implement the app.
+Which Azure Function app features should you use? 
+
+- Box 1: Custom handler
+Custom handlers can be used to create functions in any language or runtime by running an HTTP server process, for example Go or Rust.
+
+Box 2: extension bundles
+is needed to support the bindings and triggers that you use
+https://docs.microsoft.com/en-us/azure/azure-functions/functions-custom-handlers?WT.mc_id=thomasmaurer-blog-thmaure#bindings-support
+
+
+---------
+
+
