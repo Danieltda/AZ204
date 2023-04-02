@@ -1216,4 +1216,118 @@ https://docs.microsoft.com/en-us/azure/azure-functions/functions-custom-handlers
 
 ---------
 
+You are developing an ASP.NET Core web application. You plan to deploy the application to Azure Web App for Containers.
+The application needs to store runtime diagnostic data that must be persisted across application restarts. You have the following code:
+
+You need to configure the application settings so that diagnostic data is stored as required.
+
+Box 1: If WEBSITES_ENABLE_APP_SERVICE_STORAGE
+If WEBSITES_ENABLE_APP_SERVICE_STORAGE setting is unspecified or set to true, the /home/ directory will be shared across scale instances, and files written will persist across restarts
+
+Box 2: /home -
+
+--------------
+
+You are developing a web app that is protected by Azure Web Application Firewall (WAF). All traffic to the web app is routed through an Azure Application
+Gateway instance that is used by multiple web apps. The web app address is contoso.azurewebsites.net.
+All traffic must be secured with SSL. The Azure Application Gateway instance is used by multiple web apps.
+You need to configure the Azure Application Gateway for the web app.
+
+- A. In the Azure Application Gateway's HTTP setting, enable the Use for App service setting
+- D. In the Azure Application Gateway's HTTP setting, set the value of the Override backend path option to contoso22.azurewebsites.net
+
+------------------
+
+You develop a software as a service (SaaS) offering to manage photographs. Users upload photos to a web service which then stores the photos in Azure
+Storage Blob storage. The storage account type is General-purpose V2.
+When photos are uploaded, they must be processed to produce and save a mobile-friendly version of the image. The process to produce a mobile-friendly version of the image must start in less than one minute.
+You need to design the process that starts the photo processing.
+
+- B -> The change feed is a log of changes that are organized into hourly segments but appended to and updated every few minutes. These segments are created only when there are blob change events that occur in that hour.
+Instead catch the triggered event, so move the photo processing to an Azure Function triggered from the blob upload.
+Reference:
+
+-------------------
+
+You are developing a web application that runs as an Azure Web App. The web application stores data in Azure SQL Database and stores files in an Azure
+Storage account. The web application makes HTTP requests to external services as part of normal operations.
+The web application is instrumented with Application Insights. The external services are OpenTelemetry compliant.
+You need to ensure that the customer ID of the signed in user is associated with all operations throughout the overall system.
+What should you do?
+
+
+- A. Add the customer ID for the signed in user to the CorrelationContext in the web application 
+
+--------------------
+
+You are developing an Azure Function App. You develop code by using a language that is not supported by the Azure Function App host. The code language supports HTTP primitives.
+You must deploy the code to a production Azure Function App environment.
+You need to configure the app for deployment.
+Which configuration values should you use? To answer, select the appropriate options in the answer area.
+
+- Publish -> Code
+- Runtime stack -> Custom handler
+- Version -> Custom
+
+------
+
+You provision virtual machines (VMs) as development environments.
+One VM does not start. The VM is stuck in a Windows update process. You attach the OS disk for the affected VM to a recovery VM.
+You need to correct the issue.
+
+- Remove the update that causes the problem
+1. Take a snapshot of the OS disk of the affected VM as a backup.
+2. Attach the OS disk to a recovery VM.
+3. Once the OS disk is attached on the recovery VM, run diskmgmt.msc to open Disk Management, and ensure the attached disk is ONLINE.
+4. (Step 1) Open an elevated command prompt instance (Run as administrator). Run the following command to get the list of the update packages that are on the attached OS disk: dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level
+5. (Step 2) Open the C:\temp\Patch_level.txt file, and then read it from the bottom up. Locate the update that's in Install Pending or Uninstall Pending state.
+6. Remove the update that caused the problem:
+dism /Image:<Attached OS disk>:\ /Remove-Package /PackageName:<PACK
+7. (Step 4) Detach the OS disk and recreate the VM. Then check whether the issue is resolved.
+
+------
+
+
+You develop an HTTP triggered Azure Function app to process Azure Storage blob data. The app is triggered using an output binding on the blob.
+The app continues to time out after four minutes. The app must process the blob data.
+You need to ensure the app does not time out and processes the blob data.
+Solution: Update the functionTimeout property of the host.json project file to 10 minutes.
+Does the solution meet the goal?
+
+- B. No -> 
+
+------
+
+You are developing an Azure Durable Function based application that processes a list of input values. The application is monitored using a console application that retrieves JSON data from an Azure Function diagnostic endpoint.
+During processing a single instance of invalid input does not cause the function to fail. Invalid input must be available to the monitoring application.
+You need to implement the Azure Durable Function and the monitoring console application.
+
+- Box 1: await context.CallEntityAsync(input[errindex],"error")
+Orchestration signals and calls an entity
+Orchestrator functions can access entities by using APIs on the orchestration trigger binding.
+Example:
+[FunctionName("CounterOrchestration")]
+public static async Task Run(
+[OrchestrationTrigger] IDurableOrchestrationContext context)
+{
+var entityId = new EntityId(nameof(Counter), "myCounter");
+// Two-way call to the entity which returns a value - awaits the response int currentValue = await context.CallEntityAsync<int>(entityId, "Get");
+
+Box 2: Failed -
+During processing a single instance of invalid input does not cause the function to fail.
+Note: RuntimeStatus: One of the following values:
+Failed: The instance failed with an error.
+Completed: The instance has completed normally.
+Terminated: The instance was stopped abruptly.
+Pending: The instance has been scheduled but has not yet started running.
+Running: The instance has started running.
+ContinuedAsNew: The instance has restarted itself with a new history. This state is a transient state.
+
+Box 3: Input -
+Invalid input must be available to the monitoring application.
+Reference:
+https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-entities https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-instance-management
+
+-----
+
 
